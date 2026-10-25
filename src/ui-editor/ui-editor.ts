@@ -77,7 +77,7 @@ const UNIT_LISTS: Partial<Record<string, { key: "batteries" | "sources"; kind: U
   charger: { key: "sources", kind: "charger" },
 };
 
-@customElement("power-flow-card-plus-mushroom-editor")
+@customElement("power-flow-card-plus-mushroom-bubble-editor")
 export class PowerFlowCardPlusEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private _config?: PowerFlowCardPlusConfig;
@@ -317,6 +317,6 @@ export class PowerFlowCardPlusEditor extends LitElement implements LovelaceCardE
 
 declare global {
   interface HTMLElementTagNameMap {
-    "power-flow-card-plus-mushroom-editor": PowerFlowCardPlusEditor;
+    "power-flow-card-plus-mushroom-bubble-editor": PowerFlowCardPlusEditor;
   }
 }

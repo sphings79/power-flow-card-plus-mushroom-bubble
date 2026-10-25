@@ -12,6 +12,6 @@ export function registerCustomCard(params: RegisterCardParams) {
   windowWithCards.customCards.push({
     ...params,
     preview: true,
-    documentationURL: `https://github.com/sphings79/power-flow-card-plus-mushroom`,
+    documentationURL: `https://github.com/sphings79/power-flow-card-plus-mushroom-bubble`,
   });
 }

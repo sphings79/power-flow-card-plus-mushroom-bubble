@@ -1,12 +1,19 @@
 # Changelog
 
-All notable changes to power-flow-card-plus-mushroom, a fork of
+All notable changes to power-flow-card-plus-mushroom-bubble, a fork of
 [flixlix/power-flow-card-plus](https://github.com/flixlix/power-flow-card-plus).
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 For releases before 1.0.0, see the
 [upstream changelog](https://github.com/flixlix/flixlix-cards/blob/main/packages/flixlix-cards/power-flow-card-plus/CHANGELOG.md).
+
+## [1.9.0] - 2026-10-25
+
+### Changed
+
+- Renamed to **Power Flow Card Plus Mushroom & Bubble**, since the card ships both looks. The repository, the JavaScript file and the card type are now `power-flow-card-plus-mushroom-bubble`; the card picker and HACS show the new display name.
+- The old card type `custom:power-flow-card-plus-mushroom` still works: the bundle registers it as an alias. The dashboard resource has to point to the renamed file (`power-flow-card-plus-mushroom-bubble.js`), because the old file is no longer published.
 
 ## [1.8.3] - 2026-10-10
 

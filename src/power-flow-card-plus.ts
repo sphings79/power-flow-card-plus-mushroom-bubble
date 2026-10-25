@@ -59,13 +59,13 @@ import localize from "@/localize/localize";
 const circleCircumference = 238.76104;
 
 registerCustomCard({
-  type: "power-flow-card-plus-mushroom",
-  name: "Power Flow Card Plus (Mushroom)",
+  type: "power-flow-card-plus-mushroom-bubble",
+  name: "Power Flow Card Plus (Mushroom & Bubble)",
   description:
     "An extended version of the power flow card with richer options, advanced features and a few small UI enhancements. Inspired by the Energy Dashboard.",
 });
 
-@customElement("power-flow-card-plus-mushroom")
+@customElement("power-flow-card-plus-mushroom-bubble")
 export class PowerFlowCardPlus extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private _config = {} as PowerFlowCardPlusConfig;
@@ -381,7 +381,7 @@ export class PowerFlowCardPlus extends LitElement {
 
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
     await import("./ui-editor/ui-editor");
-    return document.createElement("power-flow-card-plus-mushroom-editor");
+    return document.createElement("power-flow-card-plus-mushroom-bubble-editor");
   }
 
   public static getStubConfig(hass: HomeAssistant): object {
@@ -1427,3 +1427,10 @@ export class PowerFlowCardPlus extends LitElement {
 
   static styles = styles;
 }
+
+/**
+ * Keeps dashboards that still use `custom:power-flow-card-plus-mushroom` working
+ * from the renamed bundle. It is not listed in the card picker.
+ */
+@customElement("power-flow-card-plus-mushroom")
+export class PowerFlowCardPlusLegacy extends PowerFlowCardPlus {}

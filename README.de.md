@@ -1,15 +1,15 @@
 <div align="center">
 
-<img src="docs/images/banner.svg" alt="Power Flow Card Plus Mushroom — Energiefluss-Karte für Home Assistant mit mehreren Batterien, mehreren PV-Quellen und Mushroom-Optik" width="100%">
+<img src="docs/images/banner.svg" alt="Power Flow Card Plus Mushroom & Bubble — Energiefluss-Karte für Home Assistant mit mehreren Batterien, mehreren PV-Quellen und Mushroom-Optik" width="100%">
 
-# Power Flow Card Plus Mushroom
+# Power Flow Card Plus Mushroom & Bubble
 
 **Die Power-Flow-Karte — mit mehr als einer Batterie, mehr als einem PV-String und mehr als vier Geräten.**
 
 [![HACS Custom Repository](https://img.shields.io/badge/HACS-Custom%20Repository-41BDF5.svg?style=flat-square)](https://hacs.xyz)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/sphings79/power-flow-card-plus-mushroom?style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom/releases/latest)
-[![GitHub total downloads](https://img.shields.io/github/downloads/sphings79/power-flow-card-plus-mushroom/total?style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom/releases)
-[![commit_activity](https://img.shields.io/github/commit-activity/y/sphings79/power-flow-card-plus-mushroom?color=brightgreen&label=Commits&style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom/commits/main)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/sphings79/power-flow-card-plus-mushroom-bubble?style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/releases/latest)
+[![GitHub total downloads](https://img.shields.io/github/downloads/sphings79/power-flow-card-plus-mushroom-bubble/total?style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/releases)
+[![commit_activity](https://img.shields.io/github/commit-activity/y/sphings79/power-flow-card-plus-mushroom-bubble?color=brightgreen&label=Commits&style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/commits/main)
 
 [English](README.md) · **Deutsch**
 
@@ -25,7 +25,7 @@
 > [!NOTE]
 > **Dies ist ein Fork.** Er baut auf [flixlix/power-flow-card-plus](https://github.com/flixlix/power-flow-card-plus) von [@flixlix](https://github.com/flixlix) auf, der die ursprüngliche Karte geschrieben hat — das Verdienst daran gebührt ihm. Dieser Fork ergänzt mehrere Batterien, mehrere PV-Quellen, unbegrenzt viele Einzelgeräte und eine Optik im Mushroom-Stil.
 >
-> Er ist **nicht** Teil des HACS-Standardkatalogs — Installation als [benutzerdefiniertes Repository](#hacs-benutzerdefiniertes-repository). Probleme mit dem Fork bitte im [Issue-Tracker dieses Repositories](https://github.com/sphings79/power-flow-card-plus-mushroom/issues) melden, nicht im Upstream-Projekt.
+> Er ist **nicht** Teil des HACS-Standardkatalogs — Installation als [benutzerdefiniertes Repository](#hacs-benutzerdefiniertes-repository). Probleme mit dem Fork bitte im [Issue-Tracker dieses Repositories](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/issues) melden, nicht im Upstream-Projekt.
 >
 > Wenn dir die ursprüngliche Karte nützt, unterstütze ihren Autor gern auf [ko-fi](https://ko-fi.com/flixlix).
 
@@ -102,14 +102,17 @@ Aufgenommen aus einer laufenden Home Assistant, im hellen und im dunklen Modus �
 
 > [!IMPORTANT]
 > **Dieser Fork verwendet einen eigenen Kartentyp, damit er parallel zur ursprünglichen Karte laufen kann.**
-> - Kartentyp im YAML: **`custom:power-flow-card-plus-mushroom`**
-> - JavaScript-Ressourcendatei: **`power-flow-card-plus-mushroom.js`**
-> - Name in der Kartenauswahl: **„Power Flow Card Plus (Mushroom)“**
+> - Kartentyp im YAML: **`custom:power-flow-card-plus-mushroom-bubble`**
+> - JavaScript-Ressourcendatei: **`power-flow-card-plus-mushroom-bubble.js`**
+> - Name in der Kartenauswahl: **„Power Flow Card Plus (Mushroom & Bubble)“**
 >
-> Jedes Custom Element in diesem Bundle hat einen eindeutigen Namen. Das ursprüngliche `power-flow-card-plus` und dieser Fork können also gleichzeitig installiert sein, ohne sich in die Quere zu kommen. Den Fork als eigene Dashboard-Ressource eintragen, die auf `power-flow-card-plus-mushroom.js` zeigt.
+> Jedes Custom Element in diesem Bundle hat einen eindeutigen Namen. Das ursprüngliche `power-flow-card-plus` und dieser Fork können also gleichzeitig installiert sein, ohne sich in die Quere zu kommen. Den Fork als eigene Dashboard-Ressource eintragen, die auf `power-flow-card-plus-mushroom-bubble.js` zeigt.
 
 > [!NOTE]
-> Die Optionen `sources`, `batteries` und `max_individual_in_grid` sind **Ergänzungen dieses Forks** (`sphings79/power-flow-card-plus-mushroom`) und nicht Teil der ursprünglichen Karte. Alles andere verhält sich genau wie im Upstream; eine bestehende Upstream-Konfiguration funktioniert weiter, sobald man ihr `type:` auf `custom:power-flow-card-plus-mushroom` umstellt.
+> **Von `power-flow-card-plus-mushroom` (vor 1.9.0) umgestiegen?** Repository, JavaScript-Datei und Kartentyp wurden umbenannt. Bestehende Dashboards laufen weiter, solange die neue Datei geladen wird: Der alte Typ `custom:power-flow-card-plus-mushroom` löst weiterhin auf diese Karte auf. Die Dashboard-Ressource auf `power-flow-card-plus-mushroom-bubble.js` umstellen (HACS: `/hacsfiles/power-flow-card-plus-mushroom-bubble/power-flow-card-plus-mushroom-bubble.js`) und die Karten bei Gelegenheit auf den neuen Typ ändern.
+
+> [!NOTE]
+> Die Optionen `sources`, `batteries` und `max_individual_in_grid` sind **Ergänzungen dieses Forks** (`sphings79/power-flow-card-plus-mushroom-bubble`) und nicht Teil der ursprünglichen Karte. Alles andere verhält sich genau wie im Upstream; eine bestehende Upstream-Konfiguration funktioniert weiter, sobald man ihr `type:` auf `custom:power-flow-card-plus-mushroom-bubble` umstellt.
 
 Dieser Fork erlaubt es, die Hauptknoten **Solar** und **Batterie** aus *mehreren* Entitäten zu speisen und die Vierer-Grenze bei den **Einzelgeräten** aufzuheben. Die Hauptknoten behalten ihr gewohntes, aggregiertes Aussehen samt animierter Flüsse; jedes zugrunde liegende Gerät erscheint zusätzlich in einer kompakten, angedockten Aufschlüsselung direkt unter dem Flussdiagramm.
 
@@ -118,7 +121,7 @@ Dieser Fork erlaubt es, die Hauptknoten **Solar** und **Batterie** aus *mehreren
 Statt einer einzelnen `solar.entity` (oder zusätzlich dazu) lässt sich eine Liste von PV-Quellen angeben. Ihre Leistung wird zum Hauptknoten **summiert**, und jede Quelle wird unter dem Diagramm aufgeführt. Lässt man `solar.entity` weg, wird die Summe automatisch aus den Quellen berechnet.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   solar:
     # entity: sensor.pv_total   # optional – weglassen, um die Quellen automatisch zu summieren
@@ -138,7 +141,7 @@ Jede Quelle akzeptiert: `entity` (Pflicht), `name`, `icon`, `color`, `invert_sta
 Hier lässt sich eine Liste von Batterien angeben. Ihre Leistung wird zum Hauptknoten **summiert**. Ist kein aggregierter `battery.state_of_charge` gesetzt, ist der Ladezustand des Knotens der **Mittelwert** der einzelnen Ladezustände (Prozentwerte zu summieren wäre falsch). Jede Batterie wird mit eigener Leistung und eigenem Ladezustand unter dem Diagramm aufgeführt.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   battery:
     # entity: sensor.battery_total_power        # optional – weglassen zum Aufsummieren
@@ -160,7 +163,7 @@ Jede Batterie akzeptiert: `entity` (Pflicht), `state_of_charge`, `name`, `icon`,
 Die Liste `individual` ist unbegrenzt. Die ersten vier Geräte belegen wie bisher die vier Ecken des Flussdiagramms; **weitere** Geräte werden in der angedockten Liste darunter dargestellt. Mit `max_individual_in_grid` (0–4, Standard 4) steuert man, wie viele in die Ecken wandern — der Wert `0` verschiebt *alle* Einzelgeräte in die Liste.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 max_individual_in_grid: 4   # optional, 0..4 (Standard 4)
 entities:
   individual:
@@ -180,7 +183,7 @@ entities:
 Manche Anlagen laden die Batterie aus einer Quelle, die weder Netz noch PV ist — ein Auto per V2L, ein Generator, Landstrom. Der Knoten `charger` macht das sichtbar: Er sitzt **unter dem Netz** und speist die Batterie über eine eigene Einwege-Flusslinie.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   battery:
     entity: sensor.battery_power
@@ -220,7 +223,7 @@ Die obigen Listen (`solar.sources`, `battery.batteries`, `charger.sources`) ware
 Ab einer Handvoll Einzelgeräte bringen die vier Ecken nichts mehr. Mit `individual_position: right` verlieren sie ihre Kreise vollständig und erscheinen stattdessen als Liste neben dem Diagramm — im selben Stil wie die Batterie-Aufschlüsselung darunter.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 individual_position: right          # grid (Standard) | right
 sort_individual_devices: name_desc  # value (Standard) | name | name_desc
 entities:
@@ -270,7 +273,7 @@ Die angedockte Aufschlüsselung unter dem Diagramm ordnet ihre Einträge zu zwei
 Die Karte kann Energie statt Leistung anzeigen. Ein Schalter in der Kopfzeile wechselt zwischen beidem; Batterien und Einzelgeräte zeigen ihre Energie in den Listen dauerhaft — dort ist Platz dafür.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 energy_period: today   # yesterday | week | month | year | last_7_days | last_30_days | last_365_days
 energy_toggle: true    # W/kWh-Schalter anzeigen (Standard: true, sobald Energie konfiguriert ist)
 energy_default: false  # im kWh-Modus starten
@@ -393,7 +396,7 @@ Bei `classic` ohne Wirkung, dessen Kreise behalten immer ihren Ring.
 `appearance: mushroom` stellt die Karte optisch so um, dass sie neben [Mushroom](https://github.com/piitaya/lovelace-mushroom)-Karten stimmig wirkt. Das ist ein reiner Stilschalter — keine Änderung an Entitäten, Layout oder Verhalten —, man kann also jederzeit zwischen beiden Looks wechseln.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 appearance: mushroom   # classic (Standard) | mushroom | bubble
 entities:
   grid:
@@ -449,31 +452,31 @@ Wer lieber ein Video schaut, statt diese sehr lange README zu lesen 😅, dem se
 
 ### HACS (benutzerdefiniertes Repository)
 
-[![Repository im Home Assistant Community Store öffnen.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sphings79&repository=power-flow-card-plus-mushroom&category=Dashboard)
+[![Repository im Home Assistant Community Store öffnen.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sphings79&repository=power-flow-card-plus-mushroom-bubble&category=Dashboard)
 
 Dieser Fork steckt **nicht** im HACS-Standardkatalog, die Suche findet ihn also nicht. Er muss zuerst als benutzerdefiniertes Repository hinzugefügt werden. Zur Installation von HACS selbst siehe diese [Anleitung](https://hacs.xyz/docs/setup/prerequisites).
 
 1. In Home Assistant **HACS** öffnen.
 2. Das Drei-Punkte-Menü (oben rechts) öffnen und **Benutzerdefinierte Repositories** wählen.
-3. Repository: `https://github.com/sphings79/power-flow-card-plus-mushroom` — Kategorie: **Dashboard**.
-4. Hinzufügen, dann in HACS nach **Power Flow Card Plus Mushroom** suchen und herunterladen.
+3. Repository: `https://github.com/sphings79/power-flow-card-plus-mushroom-bubble` — Kategorie: **Dashboard**.
+4. Hinzufügen, dann in HACS nach **Power Flow Card Plus Mushroom & Bubble** suchen und herunterladen.
 
 Der Button oben erledigt die Schritte 1–3.
 
 <details>
 <summary>Manuelle Installation</summary>
 
-1. `power-flow-card-plus-mushroom.js` aus dem [neuesten Release](https://github.com/sphings79/power-flow-card-plus-mushroom/releases/latest) herunterladen und in das Verzeichnis `config/www` kopieren.
+1. `power-flow-card-plus-mushroom-bubble.js` aus dem [neuesten Release](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/releases/latest) herunterladen und in das Verzeichnis `config/www` kopieren.
 
 2. Die Ressource wie unten beschrieben eintragen.
 
 ### Ressource eintragen
 
-Wer Dashboards per YAML konfiguriert, trägt in der `configuration.yaml` einen Verweis auf `power-flow-card-plus-mushroom.js` ein:
+Wer Dashboards per YAML konfiguriert, trägt in der `configuration.yaml` einen Verweis auf `power-flow-card-plus-mushroom-bubble.js` ein:
 
 ```yaml
 resources:
-  - url: /local/power-flow-card-plus-mushroom.js
+  - url: /local/power-flow-card-plus-mushroom-bubble.js
     type: module
 ```
 
@@ -484,8 +487,8 @@ Wer den grafischen Editor bevorzugt, nimmt das Menü:
 3. Auf das Drei-Punkte-Symbol klicken
 4. **Ressourcen** wählen
 5. Auf (+ RESSOURCE HINZUFÜGEN) klicken
-6. Als URL `/local/power-flow-card-plus-mushroom.js` eintragen und als Typ „JavaScript-Modul“ wählen.
-   (Bei einer HACS-Installation stattdessen `/hacsfiles/power-flow-card-plus-mushroom/power-flow-card-plus-mushroom.js` mit „JavaScript-Modul“ verwenden, falls HACS das nicht schon erledigt hat.)
+6. Als URL `/local/power-flow-card-plus-mushroom-bubble.js` eintragen und als Typ „JavaScript-Modul“ wählen.
+   (Bei einer HACS-Installation stattdessen `/hacsfiles/power-flow-card-plus-mushroom-bubble/power-flow-card-plus-mushroom-bubble.js` mit „JavaScript-Modul“ verwenden, falls HACS das nicht schon erledigt hat.)
 
 </details>
 
@@ -500,7 +503,7 @@ Wer den grafischen Editor bevorzugt, nimmt das Menü:
 
 | Name                        | Typ       |                 Standard                 | Beschreibung                                                                                                                                      |
 | --------------------------- | --------- | :--------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type                        | `string`  |            **erforderlich**              | `custom:power-flow-card-plus-mushroom`.                                                                                                            |
+| type                        | `string`  |            **erforderlich**              | `custom:power-flow-card-plus-mushroom-bubble`.                                                                                                            |
 | entities                    | `object`  |            **erforderlich**              | Eine oder mehrere Sensor-Entitäten, siehe [Entities-Objekt](#entities-objekt) für weitere Optionen.                                                |
 | title                       | `string`  |                                          | Zeigt einen Titel am oberen Rand der Karte.                                                                                                        |
 | dashboard_link              | `string`  |                                          | Zeigt einen Link zu einem Energie-Dashboard. Erwartet einen URL-Pfad, für das eingebaute Dashboard also z. B. `/energy`.                           |
@@ -716,7 +719,7 @@ Die folgenden Konfigurationen führen mit möglichst wenigen Zeilen zum Ziel. In
 #### Nur Netz
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   grid:
     entity: sensor.grid_power
@@ -734,7 +737,7 @@ Das sollte etwa so aussehen:
 ##### Netz und Solar
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   grid:
     entity:
@@ -753,7 +756,7 @@ Das sollte etwa so aussehen:
 ##### Netz, Solar und Batterie
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   grid:
     entity:
@@ -784,7 +787,7 @@ Das sollte etwa so aussehen:
 > Diese Konfiguration ist etwas willkürlich — sie steht hier nur, um zu zeigen, was die Karte kann.
 
 ```yaml
-type: custom:power-flow-card-plus-mushroom
+type: custom:power-flow-card-plus-mushroom-bubble
 entities:
   home:
     entity: sensor.home_consumption

@@ -10,11 +10,11 @@ import minifyHTML from 'rollup-plugin-minify-html-literals';
 const dev = process.env.ROLLUP_WATCH;
 
 const banner = `/*!
- * power-flow-card-plus-mushroom
+ * power-flow-card-plus-mushroom-bubble
  * Copyright (c) 2023-2026 flixlix
  * Copyright (c) 2026 sphings79
  * @license MIT
- * https://github.com/sphings79/power-flow-card-plus-mushroom/blob/main/LICENSE
+ * https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/blob/main/LICENSE
  */`;
 
 const serveOptions = {
@@ -35,7 +35,7 @@ export default [
         dir: "dist",
         format: "es",
         inlineDynamicImports: true,
-        entryFileNames: "power-flow-card-plus-mushroom.js",
+        entryFileNames: "power-flow-card-plus-mushroom-bubble.js",
         banner,
       },
     ],
