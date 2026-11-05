@@ -6,7 +6,7 @@
 
 **The power flow card, with more than one battery, more than one PV string and more than four devices.**
 
-[![HACS Custom Repository](https://img.shields.io/badge/HACS-Custom%20Repository-41BDF5.svg?style=flat-square)](https://hacs.xyz)
+[![Marketplace](https://img.shields.io/badge/Marketplace-41BDF5.svg?style=flat-square)](https://my.home-assistant.io/redirect/marketplace_browse/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/sphings79/power-flow-card-plus-mushroom-bubble?style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/releases/latest)
 [![GitHub total downloads](https://img.shields.io/github/downloads/sphings79/power-flow-card-plus-mushroom-bubble/total?style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/releases)
 [![commit_activity](https://img.shields.io/github/commit-activity/y/sphings79/power-flow-card-plus-mushroom-bubble?color=brightgreen&label=Commits&style=flat-square)](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/commits/main)
@@ -25,7 +25,7 @@
 > [!NOTE]
 > **This is a fork.** It builds on [flixlix/power-flow-card-plus](https://github.com/flixlix/power-flow-card-plus) by [@flixlix](https://github.com/flixlix), who wrote the original card and deserves the credit for it. This fork adds multiple batteries, multiple PV sources, unlimited individual devices and a Mushroom-style appearance.
 >
-> It is **not** part of the HACS default store — install it as a [custom repository](#hacs-custom-repository). Please report problems with the fork in [this repository's issue tracker](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/issues) rather than upstream.
+> It is part of the default catalog. Search for it in the Marketplace (Home Assistant 2026.11 and newer, see [installation](#marketplace-home-assistant-202611-and-newer)) or in HACS (Home Assistant 2026.10 and older). Please report problems with the fork in [this repository's issue tracker](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/issues) rather than upstream.
 >
 > If the original card is useful to you, consider supporting its author on [ko-fi](https://ko-fi.com/flixlix).
 
@@ -532,18 +532,29 @@ In case you want to watch a tutorial instead of reading through this very long r
 
 ## Installation
 
-### HACS (custom repository)
+### Marketplace (Home Assistant 2026.11 and newer)
+
+Home Assistant 2026.11 replaces HACS with the built-in **Marketplace**. If you installed Power Flow Card Plus Mushroom & Bubble through HACS, the Marketplace takes it over on upgrade, and you don't need to do anything.
+
+For a new install, open **Settings → Marketplace**, search for **Power Flow Card Plus Mushroom & Bubble** and install it, or use this button:
+
+[![Open your Home Assistant instance and open this repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=sphings79&repository=power-flow-card-plus-mushroom-bubble)
+
+Restart Home Assistant if a repair asks you to.
+
+If **Power Flow Card Plus Mushroom & Bubble** doesn't show up in the search, add it as a custom repository instead: in **Settings → Marketplace**, add `https://github.com/sphings79/power-flow-card-plus-mushroom-bubble` (category **Dashboard**), then install it from there. Custom repositories need the Marketplace to be connected to GitHub, and it asks you to connect the first time.
+
+### HACS (Home Assistant 2026.10 and older)
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sphings79&repository=power-flow-card-plus-mushroom-bubble&category=Dashboard)
 
-This fork is **not** in the HACS default store, so searching for it will not find it. Add it as a custom repository first. To install HACS itself, follow these [instructions](https://hacs.xyz/docs/setup/prerequisites).
+This fork is in the HACS default store, so you can search for it directly. To install HACS itself, follow these [instructions](https://hacs.xyz/docs/setup/prerequisites).
 
 1. In Home Assistant, open **HACS**.
-2. Open the three-dot menu (top right) and choose **Custom repositories**.
-3. Repository: `https://github.com/sphings79/power-flow-card-plus-mushroom-bubble` — Category: **Dashboard**.
-4. Add it, then search for **Power Flow Card Plus Mushroom & Bubble** in HACS and download it.
+2. Search for **Power Flow Card Plus Mushroom & Bubble**.
+3. Download it.
 
-The button above does steps 1–3 for you.
+The button above opens it in HACS for you.
 
 <details>
 <summary>Manual install</summary>
