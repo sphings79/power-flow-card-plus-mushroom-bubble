@@ -28,14 +28,17 @@ const rangeLabel = (main: PowerFlowCardPlus, language: string): string => {
  *
  * Only rendered when at least one energy entity is configured — without one there
  * is nothing to switch to, and an inert control would just be confusing.
+ *
+ * `inline` puts the switch on a row of its own instead of floating in the corner;
+ * used when there is no top row, where the corner is occupied by the grid circle.
  */
-export const energyToggleElement = (main: PowerFlowCardPlus, config: PowerFlowCardPlusConfig, hasEnergy: boolean) => {
+export const energyToggleElement = (main: PowerFlowCardPlus, config: PowerFlowCardPlusConfig, hasEnergy: boolean, inline = false) => {
   if (!hasEnergy || config.energy_toggle === false) return nothing;
 
   const picker = config.energy_period_picker === true;
   const periodLabel = localize(`editor.energy_period_${config.energy_period ?? "today"}`);
 
-  const toggle = html`<div class="pfcp-energy-toggle ${picker ? "in-bar" : ""}" role="group" aria-label="${localize("editor.energy_toggle")}">
+  const toggle = html`<div class="pfcp-energy-toggle ${picker ? "in-bar" : inline ? "inline" : ""}" role="group" aria-label="${localize("editor.energy_toggle")}">
     <button
       type="button"
       class="pfcp-energy-option ${!main.energyMode ? "active" : ""}"

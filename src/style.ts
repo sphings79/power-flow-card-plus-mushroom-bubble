@@ -715,6 +715,12 @@ export const styles = css`
     position: static;
   }
 
+  /* No top row: the corner belongs to the grid circle, so the switch gets its own row. */
+  .pfcp-energy-toggle.inline {
+    position: static;
+    margin-bottom: 8px;
+  }
+
   .pfcp-energy-picker {
     display: flex;
     flex-wrap: wrap;

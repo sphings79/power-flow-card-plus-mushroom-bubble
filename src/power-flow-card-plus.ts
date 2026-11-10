@@ -554,6 +554,12 @@ export class PowerFlowCardPlus extends LitElement {
     const getIndividualDisplayState = (field?: IndividualObject) => {
       if (!field) return "";
       if (field?.state === undefined) return "";
+      // In energy mode the circle shows the period total, like every other node.
+      if (this._energyMode) {
+        const cfg = this._config.entities.individual?.find((c) => c.entity === field.entity);
+        const energy = this.energyValue(cfg?.energy_entity, cfg?.energy_from_state);
+        if (energy !== null && energy !== undefined) return displayEnergy(this.hass, this._config, energy);
+      }
       return displayValue(this.hass, this._config, field?.state, {
         decimals: field?.decimals,
         unit: field?.unit,
@@ -656,7 +662,12 @@ export class PowerFlowCardPlus extends LitElement {
           <div class="pfcp-layout">
             ${zone("left")}
             <div class="pfcp-flow">
-              ${energyToggleElement(this, this._config, this.hasEnergyConfigured)}
+              ${energyToggleElement(
+                this,
+                this._config,
+                this.hasEnergyConfigured,
+                !(solar.has || individualObjs?.some((individual) => individual?.has) || nonFossil.hasPercentage)
+              )}
               ${solar.has || individualObjs?.some((individual) => individual?.has) || nonFossil.hasPercentage
                 ? html`<div class="row">
                     ${nonFossilElement(this, this._config, {

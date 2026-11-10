@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 For releases before 1.0.0, see the
 [upstream changelog](https://github.com/flixlix/flixlix-cards/blob/main/packages/flixlix-cards/power-flow-card-plus/CHANGELOG.md).
 
+## [1.9.1] - 2026-11-10
+
+### Fixed
+
+- In energy (kWh) mode the individual device circles showed the current power instead of the period energy. They show the value of `energy_entity` now, like every other node. Without an energy value they keep showing the power.
+- The W / kWh switch was hidden behind the grid circle when the diagram had no top row (no solar, no active individual device). It gets a row of its own in that case.
+
 ## [1.9.0] - 2026-10-25
 
 ### Changed
