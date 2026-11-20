@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 For releases before 1.0.0, see the
 [upstream changelog](https://github.com/flixlix/flixlix-cards/blob/main/packages/flixlix-cards/power-flow-card-plus/CHANGELOG.md).
 
+## [Unreleased]
+
+### Fixed
+
+- In energy (kWh) mode the PV circle kept showing watts when the PV strings only had `energy_entity` on each source. The circle shows the sum of the source energies now when `solar.energy_entity` is not set.
+- In energy (kWh) mode the home circle kept showing watts without `home.energy_entity`. It is derived now from grid consumed - returned + solar + battery discharged - charged, as long as all configured parts have an energy value.
+
 ## [1.9.1] - 2026-11-10
 
 ### Fixed

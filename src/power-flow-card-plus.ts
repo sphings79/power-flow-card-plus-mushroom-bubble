@@ -352,6 +352,59 @@ export class PowerFlowCardPlus extends LitElement {
     return typeof value === "number" && Number.isFinite(value) ? value : null;
   }
 
+  /** Sum of the energy of all sources; null unless every source has a value. */
+  private sumSourceEnergy(sources?: { energy_entity?: string; energy_from_state?: boolean }[]): number | null {
+    if (!sources?.length) return null;
+    let total = 0;
+    for (const s of sources) {
+      const v = this.energyValue(s.energy_entity, s.energy_from_state);
+      if (v === null) return null;
+      total += v;
+    }
+    return total;
+  }
+
+  /** Total battery energy: the main entity, or the sum over all batteries. */
+  private batteryEnergy(kind: "charged" | "discharged"): number | null {
+    const b = this._config?.entities?.battery;
+    if (!b) return null;
+    const main = this.energyValue(kind === "charged" ? b.energy_charged_entity : b.energy_discharged_entity, b.energy_from_state);
+    if (main !== null) return main;
+    const units = b.batteries?.filter((u) => (kind === "charged" ? u.energy_charged_entity : u.energy_discharged_entity));
+    if (!units?.length) return null;
+    let total = 0;
+    for (const u of units) {
+      const v = this.energyValue(kind === "charged" ? u.energy_charged_entity : u.energy_discharged_entity, u.energy_from_state);
+      if (v === null) return null;
+      total += v;
+    }
+    return total;
+  }
+
+  /** Period solar energy: the total entity, or the sum of the sources. */
+  private solarEnergy(): number | null {
+    const s = this._config?.entities?.solar;
+    return this.energyValue(s?.energy_entity, s?.energy_from_state) ?? this.sumSourceEnergy(s?.sources);
+  }
+
+  /** Period home energy: the entity, or derived from grid, solar and battery flows. */
+  private homeEnergy(): number | null {
+    const e = this._config?.entities;
+    const direct = this.energyValue(e?.home?.energy_entity, e?.home?.energy_from_state);
+    if (direct !== null) return direct;
+    const consumed = this.energyValue(e?.grid?.energy_consumed_entity, e?.grid?.energy_from_state);
+    if (consumed === null) return null;
+    const returned = this.energyValue(e?.grid?.energy_returned_entity, e?.grid?.energy_from_state) ?? 0;
+    const hasSolar = !!(e?.solar?.energy_entity || e?.solar?.sources?.some((x) => x.energy_entity));
+    const solar = this.solarEnergy();
+    if (hasSolar && solar === null) return null;
+    const hasBattery = !!(e?.battery?.energy_charged_entity || e?.battery?.energy_discharged_entity || e?.battery?.batteries?.length);
+    const charged = this.batteryEnergy("charged");
+    const discharged = this.batteryEnergy("discharged");
+    if (hasBattery && (charged === null || discharged === null)) return null;
+    return Math.max(consumed - returned + (solar ?? 0) + (discharged ?? 0) - (charged ?? 0), 0);
+  }
+
   public connectedCallback() {
     super.connectedCallback();
     // `hass` is usually not assigned yet at this point, so this first attempt
@@ -957,7 +1010,7 @@ export class PowerFlowCardPlus extends LitElement {
           stateColor: tint,
         };
       }),
-      energy: this.energyValue(entities.solar?.energy_entity, entities.solar?.energy_from_state),
+      energy: this.solarEnergy(),
       state: {
         total: getSolarState(this.hass, this._config),
         toHome: initialNumericState,
@@ -1171,7 +1224,7 @@ export class PowerFlowCardPlus extends LitElement {
     const homeGridCircumference =
       circleCircumference *
       ((totalHomeConsumption - (nonFossil.state.power ?? 0) - (battery.state.toHome ?? 0) - (solar.state.toHome ?? 0)) / totalHomeConsumption);
-    const homeEnergy = this.energyValue(entities.home?.energy_entity, entities.home?.energy_from_state);
+    const homeEnergy = this.homeEnergy();
     const homeUsageToDisplay =
       this._energyMode && homeEnergy !== null
         ? displayEnergy(this.hass, this._config, homeEnergy)
