@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 For releases before 1.0.0, see the
 [upstream changelog](https://github.com/flixlix/flixlix-cards/blob/main/packages/flixlix-cards/power-flow-card-plus/CHANGELOG.md).
 
+## [Unreleased]
+
+### Fixed
+
+- With `individual_position: grid` (the default), devices without a corner slot were not shown at all. They appear in the list below the diagram again, including with `max_individual_in_grid: 0`. ([#4](https://github.com/sphings79/power-flow-card-plus-mushroom-bubble/issues/4))
+
 ## [1.9.2] - 2026-11-21
 
 ### Fixed

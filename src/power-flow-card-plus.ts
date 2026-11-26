@@ -623,15 +623,15 @@ export class PowerFlowCardPlus extends LitElement {
 
     // Each breakdown list can be parked in any of the four zones around the
     // diagram; `individual` additionally supports `grid`, where the devices keep
-    // their circles instead of being listed at all.
+    // their circles and only those without a corner slot are listed below.
     const groups: { kind: "solar" | "battery" | "charger" | "individual"; where: string; items: SubEntity[]; title?: string; showSoc?: boolean }[] = [
       { kind: "solar", where: this._config.solar_position ?? "top", items: solar.subs ?? [], title: solar.name },
       { kind: "battery", where: this._config.battery_position ?? "bottom", items: battery.subs ?? [], title: battery.name, showSoc: true },
       { kind: "charger", where: this._config.charger_position ?? "bottom", items: charger.subs ?? [], title: charger.name },
       {
         kind: "individual",
-        where: individualsOnRail ? (this._config.individual_position as string) : "none",
-        items: individualsOnRail ? (overflowIndividualObjects ?? []).map(toSubEntity) : [],
+        where: individualsOnRail ? (this._config.individual_position as string) : "bottom",
+        items: (overflowIndividualObjects ?? []).map(toSubEntity),
       },
     ];
 
